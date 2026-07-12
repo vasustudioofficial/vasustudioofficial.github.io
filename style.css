@@ -1,0 +1,1732 @@
+:root {
+    --bg-dark: #0d0e12;
+    --card-bg: #161920;
+    --neon-cyan: #00f2fe;
+    --neon-purple: #4facfe;
+    --text-white: #ffffff;
+    --text-gray: #a0aec0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+
+
+/* NAVBAR STYLE */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(22, 25, 32, 0.95);
+    border-bottom: 2px solid #1f2430;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.studio-logo {
+   width: 40px;
+    height: 40px;
+    border-radius: 50%;          /*  8px se badalkar 50% kiya taaki image ekdum round ho jaye */
+    object-fit: cover;
+    border: 2px solid #ffffff;   /* Pure White crisp circular outline border */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); /* Subtle gaming glow outline ke bahar */
+}
+
+.studio-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-right a {
+   color: var(--text-gray);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: 0.3s ease;
+    
+    /* Icons alignment fix */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Icon aur Text ke beech ka gap */
+}
+
+/* Icons styling inside links */
+.nav-right a .material-symbols-outlined {
+    font-size: 20px; /* Icon ka size */
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for text and icons */
+.nav-right a:hover, .nav-right a.active {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Hover karne par icon halka sa micro-animate (pop) hoga */
+.nav-right a:hover .material-symbols-outlined {
+    transform: scale(1.15);
+}
+
+
+/* HAMBURGER (MOBILE 3 LINE) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background-color: var(--text-white);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+
+
+/* FULL WIDTH HERO BANNER */
+.hero-banner {
+    width: 100%;
+    height: 512px; /* 200px Perfect Mobile Banner Size */
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.036), rgba(0, 241, 254, 0.068)),
+    url('assets/banner-bg.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 2px solid #1f2430;
+    padding: 20px;
+}
+
+.banner-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.57);
+}
+
+.banner-content p {
+    color: var(--neon-cyan);
+    font-size: 1rem;
+}
+
+
+
+/* CONTAINER & SECTIONS SETUP */
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 50vh;
+}
+
+.page-section {
+    display: none; /* Sabhi sections chhupe rahenge */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.page-section h2 {
+   font-size: 1.8rem;          /* Aapka preferred size */
+    font-weight: 700;           /* Clean bold text */
+    color: var(--text-white);   /* Solid clean white text */
+    text-transform: uppercase;  /* Standard gaming uppercase layout */
+    letter-spacing: 1.5px;      
+    
+    /* Perfect Center Engine */
+    display: block;
+    text-align: center;         /* Text ko horizontally center me rkhne ke liye */
+    width: 100%;                
+    
+    /* Spacing & Baseline Setup */
+    padding-bottom: 12px;       /* Text aur neeche ki line ke beech ka perfect gap */
+    margin: 0 auto 35px auto;   /* Niche ke content se safe distance */
+    
+    /* 🔴 THE PERFECT BASELINE: Link jaisi saaf aur premium line */
+    border-bottom: 2px solid var(--neon-cyan); 
+    
+    /* Clean look resets */
+    box-shadow: none;
+    background: none;
+}
+
+.active-section {
+    display: block; /* Jo active hoga sirf wahi dikhega */
+}
+
+
+
+
+
+/* DYNAMIC GAME CARD GRID */
+.games-grid, .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.game-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #232836;
+    transition: 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+}
+
+.game-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.game-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+
+/* 1. Thumbnail Box Optimization (Google Play Store Style with Center Fix) */
+.game-thumbnail {
+   width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Hover Effect: Card par mouse aane par logo float karega */
+.game-card:hover .game-thumbnail {
+    transform: translateY(-6px) scale(1.03); 
+    box-shadow: 
+        0 15px 25px rgba(0, 0, 0, 0.6), 
+        0 0 15px rgba(0, 242, 254, 0.2); 
+}
+
+/* 2. Game Info Container: Isko flex banaya hai taaki button center me aa sake */
+.game-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Saara content (Text aur Button) horizontally center ho jayega */
+    text-align: center;  /* Text bhi center me rahega */
+}
+
+/* 3. Upgraded Interactive Play Button (Gaming Aesthetic) */
+.btn-play {
+    display: inline-block;
+    padding: 10px 24px;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.3); /* Initial subtle glow */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth lerp transition */
+
+    display: inline-flex;  /*  Elements ko side-by-side flex box me rakhta hai */
+    align-items: center;   /*  Icon aur Text ko vertical center alignment deta hai */
+    justify-content: center;
+}
+
+/* Hover State: Mouse upar aane par (Jaise PointerEnter) */
+.btn-play:hover {
+    transform: scale(1.08); /* Unity automatic button scale effect */
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 30px rgba(79, 172, 254, 0.356); /* High intensity neon glow */
+    color: #ffffff;
+}
+
+/* Active State: Click karne par (Jaise PointerDown/Click animation) */
+.btn-play:active {
+    transform: scale(0.95); /* Button niche dabne ka effect */
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Ek shimmery animated effect (Optional shine line jo move kregi) */
+.btn-play::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.5s;
+}
+
+.btn-play:hover::before {
+    left: 100%;
+}
+
+
+
+
+
+
+/* ================= PREMIUM STUDIO FOOTER ================= */
+.studio-footer {
+    background-color: #090a0d;
+    border-top: 2px solid #1f2430;
+    padding: 60px 5% 20px 5%;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr; /* 3 Columns layout */
+    gap: 40px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-white);
+    margin-bottom: 20px;
+    border-left: 3px solid var(--neon-cyan);
+    padding-left: 10px;
+}
+
+.footer-desc {
+    color: var(--text-gray);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* Footer Navigation Buttons Style */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s ease;
+    width: fit-content;
+}
+
+.footer-links a .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.footer-links a:hover {
+    color: var(--neon-cyan);
+    transform: translateX(5px); /* Hover karne par text right me slide hoga */
+}
+
+/* Social Media Interactive Grid - Size & Text Fix */
+.social-icons-grid {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.social-btn {
+    width: 40px;          /* Perfect professional square size */
+    height: 40px;
+    background-color: #161920;
+    border: 1px solid #232836;
+    border-radius: 8px;   /* Clean modern rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 🔴 TEXT/ICON SIZE FIX: Isse icon ka font size bilkul control me rahega aur ajib nahi dikhega */
+.social-btn .material-symbols-outlined {
+    font-size: 20px !important; /* Size ko fix kiya taaki bada na ho */
+    line-height: 1;
+    display: block;
+}
+
+/* Official Brand Colors Hover States (With Glow & Bounce) */
+.yt-btn:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+.dc-btn:hover {
+    background-color: #5865f2;
+    border-color: #5865f2;
+    box-shadow: 0 0 12px rgba(88, 101, 242, 0.4);
+    transform: translateY(-3px);
+}
+
+.fb-btn:hover {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    box-shadow: 0 0 12px rgba(24, 119, 242, 0.4);
+    transform: translateY(-3px);
+}
+
+.mail-btn:hover {
+    background-color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    color: #000; /* Contrast black icon on cyan */
+    box-shadow: 0 0 12px var(--neon-cyan);
+    transform: translateY(-3px);
+}
+/* Footer Bottom Copyright Copyright Area */
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #12151c;
+    text-align: center;
+    color: #4a5568;
+    font-size: 0.85rem;
+}
+
+
+
+/* ================= STUDIO DASHBOARD PROFILE BANNER ================= */
+.studio-dashboard-banner {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    background: linear-gradient(135deg, #0e1117 0%, #07080c 100%);
+    border-top: 1px solid #1f2430;
+    border-bottom: 2px solid var(--neon-cyan);
+    padding: 35px 0;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.banner-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Stretch lagane se line automatic full height le legi */
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* --- HEADINGS (Common Style for Left & Right) --- */
+.profile-header-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--neon-cyan);
+    margin: 0 0 18px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.stats-title {
+    color: #9d4ede; /* Purple hint for the metrics header to distinguish */
+    text-shadow: 0 0 10px rgba(157, 78, 221, 0.2);
+}
+
+.profile-header-title .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* --- LEFT SIDE: PROFILE SYSTEM --- */
+.banner-left-profile {
+    flex: 1;
+    min-width: 320px;
+}
+
+.profile-rows-container {
+    background-color: #12151c;
+    border: 1px solid #1f2430;
+    border-radius: 12px;
+    padding: 6px 0;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #1b1f2b;
+}
+
+.profile-row:last-child { border-bottom: none; }
+.row-label { font-size: 0.88rem; color: var(--text-gray); font-weight: 500; }
+.row-value { font-size: 0.92rem; color: var(--text-white); font-weight: 600; }
+.studio-highlight { color: var(--text-white); letter-spacing: 0.5px; }
+
+.country-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #1a1d26;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid #2d3345;
+    font-size: 0.85rem;
+}
+
+.dev-id {
+    font-family: monospace;
+    color: #a0aec0;
+    background: #090a0d;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.email-link {
+    color: var(--neon-cyan) !important;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 🔴 CENTRAL DIVIDER LINE SYSTEM */
+.banner-center-divider {
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, #1f2430 20%, #1f2430 80%, transparent 100%);
+    margin: 0 20px;
+}
+
+/* --- RIGHT SIDE: LIVE METRICS --- */
+.banner-right {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-flex-container {
+    display: flex;
+    gap: 40px;
+    flex-grow: 1;
+    align-items: center; /* Metrics vertical centering inside block */
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon .material-symbols-outlined { font-size: 26px; }
+.downloads-icon { background-color: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.15); color: var(--neon-cyan); }
+.active-icon { background-color: rgba(157, 78, 221, 0.08); border: 1px solid rgba(157, 78, 221, 0.15); color: #9d4ede; }
+.stat-data { display: flex; flex-direction: column; }
+.stat-number { font-size: 1.7rem; font-weight: 800; color: var(--text-white); line-height: 1.1; }
+.stat-label { font-size: 0.85rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; }
+
+
+
+
+/* --- PREMIUM HORIZONTAL BANNER SCROLL ENGINE --- */
+.carousel-section-container {
+    margin-top: 25px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-sub-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-gray);
+    letter-spacing: 1.2px;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+}
+
+/* Clear Viewport Boundary with Soft Faded Edges */
+.studio-carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    background: #090a0d;
+    border: 1px solid #1f2430;
+    border-radius: 12px;
+    padding: 12px 0;
+    display: flex;
+    position: relative;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+/* Linear Infinite Matrix Translation */
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: infiniteHorizontalScroll 25s linear infinite; /* Slightly slower for readability */
+}
+
+/* 🔴 MOUSE HOVER PAUSE ENGINE: Hover karte hi glide smooth freeze ho jayegi */
+.studio-carousel-viewport:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* Big Landscape Banner Card Setup */
+.carousel-item-node {
+    position: relative;
+    width: 260px; /* Bada wide-banner size */
+    height: 145px; /* Landscape 16:9 feel aspect */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #12151c;
+    border: 1px solid #1f2430;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+}
+
+/* Heavy Asset Main Image */
+.carousel-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Card hover par image halki scale up hogi dynamic game feel ke liye */
+.carousel-item-node:hover .carousel-banner-img {
+    transform: scale(1.05);
+}
+
+/* 🔴 BOTTOM GRADIENT TEXT OVERLAY BLOCK */
+.carousel-meta-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Bottom dark gradient taaki har background image par text clear dikhe */
+    background: linear-gradient(to top, rgba(7, 8, 12, 0.95) 0%, rgba(7, 8, 12, 0.6) 60%, transparent 100%);
+    padding: 15px 12px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    pointer-events: none; /* Image interaction smoothly pass through karne ke liye */
+}
+
+.carousel-game-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.carousel-game-desc {
+    font-size: 0.72rem;
+    color: #a0aec0;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Badi description line matrix se out na ho */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* HW-Accelerated Seamless Frame Translation Loops */
+@keyframes infiniteHorizontalScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Half track calculation loops natively */
+}
+
+
+
+/* ================= UPCOMING PROJECTS ENGINE STYLES ================= */
+.upcoming-projects-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.section-main-heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--neon-cyan);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 0 12px rgba(0, 242, 254, 0.15);
+}
+
+.section-main-heading .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* Flex layout containing the upcoming list nodes */
+.upcoming-games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* 🔴 CENTRAL DYNAMIC CARD ENGINE */
+.upcoming-card-node {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Taaki text aur image ki height matching rhe */
+    background: linear-gradient(145deg, #12151c 0%, #0d1015 100%);
+    border: 1px solid #1f2430;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.upcoming-card-node:hover {
+    transform: translateY(-3px);
+    border-color: #3b4252;
+}
+
+/* Left Content Section inside Card */
+.upcoming-card-left-text {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.upcoming-badge {
+    align-self: flex-start;
+    background: rgba(157, 78, 221, 0.12);
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    color: #b577e6;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 4px;
+}
+
+.upcoming-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-white);
+    margin: 0;
+}
+
+.upcoming-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 🔴 RIGHT GRAPHICS SYSTEM: Rendered conditionally via JS */
+.upcoming-card-right-graphics {
+    width: 240px; /* Precise landscape box */
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-left: 1px solid #1f2430;
+}
+
+.upcoming-graphics-asset {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Edge shadow overlay over graphics asset inside layout */
+.upcoming-card-right-graphics::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(to right, #12151c, transparent);
+    pointer-events: none;
+}
+
+
+
+/* ================= EXTRA LARGE HERO SHOWCASE SLIDER ================= */
+.hero-showcase-slider {
+    width: 100vw;
+    height: 70vh;               /* Large scale height matrix */
+    min-height: 480px;
+    max-height: 750px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;        /* Viewport limits break to reach absolute edges */
+    overflow: hidden;
+    background-color: #07080c;
+    border-bottom: 3px solid #1f2430;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+
+    margin-bottom: 60px;
+}
+
+/* Background Images Frame Engine */
+.slider-image-viewport {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide-banner-node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    z-index: 1;
+}
+
+/* Active Class handles the smooth cross-fade blend */
+.slide-banner-node.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.slide-banner-node img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 🔴 CINEMATIC DOUBLE VIGNETTE OVERLAY (Text readablity aur gaming feel ke liye) */
+.slide-banner-node::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Left se absolute black overlay text support ke liye aur bottom se blend hone ke liye */
+    background: linear-gradient(90deg, rgba(7, 8, 12, 0.85) 0%, rgba(7, 8, 12, 0.3) 40%, transparent 100%),
+                linear-gradient(to top, rgba(7, 8, 12, 0.9) 0%, transparent 30%);
+    pointer-events: none;
+}
+
+/* 🔴 TOP LEFT CORNER FLOATING IDENTITY PANEL */
+.slider-top-corner-title {
+    position: absolute;
+    top: 40px;
+    left: 5%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.title-node-badge {
+    align-self: flex-start;
+    background-color: var(--neon-cyan);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 3px 12px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.title-node-name {
+    font-size: 2.8rem; /* Large impact heading size */
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.9);
+}
+
+/* INTERACTIVE ACTION NAV BUTTONS */
+.slider-control-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 55px;
+    height: 55px;
+    background-color: rgba(22, 25, 32, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slider-control-btn .material-symbols-outlined {
+    font-size: 24px;
+    transition: transform 0.2s;
+}
+
+.slider-control-btn:hover {
+    background-color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+}
+
+.btn-prev { left: 3%; }
+.btn-next { right: 3%; }
+.btn-prev:hover .material-symbols-outlined { transform: translateX(-2px); }
+.btn-next:hover .material-symbols-outlined { transform: translateX(2px); }
+
+/* BOTTOM DOTS DASHBOARD LAYER */
+.slider-dots-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.slider-dot {
+    width: 14px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    width: 35px; /* Sretches dynamically to display focus node */
+    background-color: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+
+/* ================= STUDIO DEV TOOLS TECH STACK ================= */
+.studio-tools-section {
+    max-width: 1200px;
+    margin: 50px auto 80px auto; /* 80px bottom margin taaki niche wale section se gap bana rhe */
+    padding: 0 20px;
+}
+
+/* Grid Matrix Container */
+.tools-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Auto adaptive grid column structure */
+    gap: 20px;
+    width: 100%;
+}
+
+/* Individual Stack Card */
+.tool-card-node {
+    background: linear-gradient(145deg, #12151c 0%, #0d1015 100%);
+    border: 1px solid #1f2430;
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+}
+
+.tool-card-node:hover {
+    transform: translateY(-4px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.05);
+}
+
+/* Tool Category Header Layer */
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tool-cat-icon {
+    font-size: 18px !important;
+}
+
+.tool-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-gray);
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+/* Brand Text Style Rules */
+.tool-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 4px 0 0 0;
+    letter-spacing: 0.5px;
+}
+
+.tool-desc {
+    font-size: 0.88rem;
+    color: #a0aec0;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Category Accent Coloring Engine */
+.engine-color { color: var(--neon-cyan); }
+.art-color { color: #9d4ede; } /* Purple accent for graphic nodes */
+.audio-color { color: #ff9e00; } /* Subtle orange hint for waveform sounds */
+
+
+
+/* ================= ABOUT SECTION MATRIX ================= */
+.about-container-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.about-main-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-main-header h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* Underline accent line for header */
+.accent-bar {
+    width: 60px;
+    height: 3px;
+    background-color: var(--neon-cyan);
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Grid layout splitting the 3 thoughts */
+.about-story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* Base Story Card UI */
+.story-card {
+    background: linear-gradient(145deg, #12151c 0%, #0d1015 100%);
+    border: 1px solid #1f2430;
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    border-color: #2b3245;
+}
+
+/* Card Header Components */
+.story-icon-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.story-icon-header .material-symbols-outlined {
+    font-size: 24px !important;
+}
+
+.story-icon-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Paragraph fonts inside text block */
+.story-card p {
+    font-size: 0.92rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.story-card p strong {
+    color: #fff; /* Bolds get pure white highlight contrast */
+}
+
+/* Icons Color Accents */
+.icon-intro { color: var(--neon-cyan); }
+.icon-focus { color: #ff9e00; } /* Orange warmth for focus module */
+.icon-future { color: #9d4ede; } /* Rocket purple for vision module */
+
+/* 🚀 Special Neon Border effect for Future Vision Card */
+.future-highlight-card {
+    border: 1px solid rgba(157, 78, 221, 0.2);
+    position: relative;
+}
+
+.future-highlight-card:hover {
+    border-color: #9d4ede;
+    box-shadow: 0 10px 30px rgba(157, 78, 221, 0.05);
+}
+
+
+/* ================= PLAY CONSOLE PRIVACY DASHBOARD STYLES ================= */
+.privacy-dashboard-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* --- TOP SPLIT HERO AREA --- */
+.privacy-hero-panel {
+    background: linear-gradient(135deg, #111622 0%, #080b11 100%);
+    border: 1px solid #1f2430;
+    border-radius: 18px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.privacy-hero-left {
+    flex: 1;
+}
+
+.privacy-hero-left h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 12px 0;
+}
+
+.privacy-tagline {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    font-weight: 500;
+}
+
+/* Console Styled Tech Badge */
+.console-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    color: var(--neon-cyan);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 6px;
+}
+
+.console-status-badge .material-symbols-outlined {
+    font-size: 16px;
+}
+
+/* 🔴 LARGE PRIVACY ICON MODULE (Play Console Style) */
+.privacy-hero-right-icon {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dashboard-privacy-icon {
+    font-size: 85px !important; /* Extra large shield icon scale */
+    color: var(--neon-cyan);
+    filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
+}
+
+/* --- BOTTOM COLUMN BY COLUMN GRID SYSTEM --- */
+.privacy-policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Clean column alignment setup */
+    gap: 25px;
+    width: 100%;
+}
+
+.policy-column-card {
+    background-color: #12151c;
+    border: 1px solid #1f2430;
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+}
+
+.policy-column-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 242, 254, 0.3);
+}
+
+.policy-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.policy-emoji {
+    font-size: 1.3rem;
+}
+
+.policy-card-title h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.policy-card-text {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.policy-card-text strong {
+    color: var(--neon-cyan); /* Highlight networks like Unity Ads */
+}
+
+
+/* --- PRIVACY MAIL LINK STYLE --- */
+.policy-mail-link {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px dashed var(--neon-cyan);
+    transition: color 0.2s ease;
+}
+
+.policy-mail-link:hover {
+    color: #fff;
+    border-bottom-style: solid;
+}
+
+/* 🚀 Contact Card Subtle Orange/Red Alert border tint */
+.contact-highlight-card {
+    border: 1px solid rgba(255, 158, 0, 0.15);
+}
+.contact-highlight-card:hover {
+    border-color: #ff9e00;
+}
+
+/* --- BOTTOM LEARN MORE RESOURCE PANEL --- */
+.privacy-resources-panel {
+    margin-top: 35px;
+    background: #11141b;
+    border: 1px solid #1f2430;
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.resource-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resource-icon {
+    color: var(--neon-cyan);
+    font-size: 22px !important;
+}
+
+.resource-info p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+.resource-links-group {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+/* Sleek Dashboard Buttons */
+.resource-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1a1f2c;
+    border: 1px solid #2d3748;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.resource-btn .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--neon-cyan);
+}
+
+.resource-btn:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+}
+
+.resource-btn:hover .material-symbols-outlined {
+    color: #000;
+}
+
+
+
+/* ================= GAMING CONTACT FORM INTEGRATION STYLES ================= */
+.contact-dashboard-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.contact-header-block {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.contact-header-block h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.contact-header-block p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin: 0 0 15px 0;
+}
+
+/* Master Grid Structure splitting Info and Form */
+.contact-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: start;
+    width: 100%;
+}
+
+/* Left Sidebar Info Cards */
+.contact-info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-node {
+    background: #12151c;
+    border: 1px solid #1f2430;
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-icon {
+    color: var(--neon-cyan);
+    font-size: 28px !important;
+    background: rgba(0, 242, 254, 0.05);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.info-text h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 4px 0;
+}
+
+.info-text p, .info-text a {
+    font-size: 0.88rem;
+    color: var(--text-gray);
+    margin: 0;
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+.info-text a {
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+/* Right Side Form Console Wrapper */
+.contact-form-wrapper {
+    background: linear-gradient(145deg, #111622 0%, #080b11 100%);
+    border: 1px solid #1f2430;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.gaming-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-input-group label {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+/* Beautiful Neon Form Input Controllers */
+.form-input-group input, 
+.form-input-group textarea {
+    background: #090a0d;
+    border: 1px solid #2d3748;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 0.92rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-input-group input:focus, 
+.form-input-group textarea:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
+}
+
+/* Submit Action Button styling */
+.submit-form-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--neon-cyan);
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.submit-form-btn .material-symbols-outlined {
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.submit-form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.3);
+}
+
+.submit-form-btn:hover .material-symbols-outlined {
+    transform: translateX(3px) rotate(-15deg); /* Dynamic flight feel on submit icon */
+}
+
+
+/* RESPONSIVE DESIGN (FOR MOBILE CAPABILITIES) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Mobile par 3 lines dikhengi */
+    }
+
+    .nav-right {
+        position: fixed;
+        right: -100%; /* Shuruat me screen se bahar right side rhega */
+        top: 72px;
+        height: calc(100vh - 72px);
+        background-color: var(--card-bg);
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        gap: 25px;
+        transition: 0.4s ease-in-out; /* Smooth Slide effect */
+        border-left: 2px solid #1f2430;
+    }
+
+    .nav-right.mobile-active {
+        right: 0; /* Slide hoker screen par aayega */
+    }
+
+    .nav-right a {
+       margin-left: 0;
+        width: 80%; /* Mobile side panel me link thoda bada bar dikhe */
+        justify-content: flex-start; /* Icons left aligned rahenge */
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+    /* Mobile me active link ke piche ek chota sa highlight box banner */
+    .nav-right a.active {
+        background-color: rgba(0, 242, 254, 0.1);
+    }
+
+    .hero-banner {
+        height: 200px;
+    }
+    
+    .banner-content h1 {
+        font-size: 1rem;
+    }
+
+    .banner-content p {
+        font-size: 0.6rem;
+    }
+
+
+
+    .banner-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    /* Mobile standard responsive resets: Divider turns horizontal or disappears */
+    .banner-center-divider {
+        width: 100%;
+        height: 1px;
+        background: #1f2430;
+        margin: 10px 0;
+    }
+    
+    .banner-left-profile, .banner-right {
+        width: 100%;
+    }
+    
+    .stats-flex-container {
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+
+    .upcoming-card-node {
+        flex-direction: column; /* Flips into top text, bottom graphics on mobile */
+    }
+    
+    .upcoming-card-right-graphics {
+        width: 100%;
+        height: 150px;
+        border-left: none;
+        border-top: 1px solid #1f2430;
+    }
+    
+    .upcoming-card-right-graphics::before {
+        width: 100%;
+        height: 30px;
+        background: linear-gradient(to bottom, #12151c, transparent);
+    }
+
+
+    .hero-showcase-slider { height: 45vh; }
+    .title-node-name { font-size: 1.8rem; }
+    .slider-control-btn { width: 40px; height: 40px; }
+    .slider-control-btn .material-symbols-outlined { font-size: 18px; }
+    .slider-top-corner-title { top: 25px; } 
+    
+    
+    .tools-grid-layout {
+        grid-template-columns: 1fr; /* Mobile version scales strictly into single row layout */
+    }
+
+
+    .about-story-grid {
+        grid-template-columns: 1fr; /* Stack vertically on small responsive displays */
+    }
+    .story-card {
+        padding: 22px;
+    }
+
+
+    .privacy-hero-panel {
+        flex-direction: column-reverse; /* Flips icon to top or text below smoothly on mobile */
+        text-align: center;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .console-status-badge {
+        justify-content: center;
+    }
+
+    .privacy-hero-right-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .dashboard-privacy-icon {
+        font-size: 65px !important;
+    }
+
+    .privacy-policy-grid {
+        grid-template-columns: 1fr; /* Pure one-column format for thin devices */
+    }
+
+    .privacy-resources-panel {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .resource-info {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .resource-links-group {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .resource-btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+
+    .contact-grid-layout {
+        grid-template-columns: 1fr; /* Collapses beautifully into stacked rows on mobile layout */
+        gap: 25px;
+    }
+    
+    .contact-form-wrapper {
+        padding: 22px;
+    }
+    
+    .submit-form-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+
+     .footer-container {
+        grid-template-columns: 1fr; /* Mobile par saare columns ek ke niche ek aa jayenge */
+        gap: 30px;
+    }
+    
+    .studio-footer {
+        padding: 40px 20px 20px 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
