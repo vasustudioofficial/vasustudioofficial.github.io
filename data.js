@@ -1,80 +1,105 @@
-// Game Database (Jaise C# me GameData ki Struct ya Class banti hai)
+
+// 1. Expanded Games Data Matrix with Media Reference Assets
 const gamesData = [
     {
-        id: "Tiger And Goat :offline",
+        id: "tiger_and_goat",
         title: "Tiger And Goat :offline",
         description: "Master the art of strategy with two classic board games in one! Dive into the traditional world of Tiger & Goat (Bagh Bakri) or test your tactical skills in the competitive Red & Green mode. With customizable boards, varying difficulty levels, and unique environments, every match is a fresh challenge.",
         thumbnail: "assets/tigerandgoat.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.tigerandgoatoffline",
-        featured: true
+        featured: true,
+        // Game specific media assets
+        media: {
+            screenshots: [
+                "assets/tigerandgoatgameplay.png",
+                "assets/tigergoatgoplay.png"
+            ]
+        }
     },
     {
-        id: "Snake And Ladder :offline",
+        id: "snake_and_ladder",
         title: "Snake And Ladder :offline",
         description: "Looking for a fun way to spend time with friends? This version of Snakes & Ladders brings the traditional tabletop experience to life with a lot more variety and control. Whether you want a quick casual match or a high-stakes game, you get to set the rules.",
         thumbnail: "assets/snakeandladder.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.snakeandladder",
-        featured: true
+        featured: true,
+        media: {
+            screenshots: [
+                
+            ]
+        }
     },
     {
-        id: "Vehicle Runner",
+        id: "vehicle_runner",
         title: "Vehicle Runner",
         description: "Get ready for the ultimate 2D driving challenge. In Vehicle Runner, your mission is simple: drive, dodge, and survive. Take control of your favorite vehicle and navigate through a never-ending highway filled with unpredictable traffic. How long can you stay on the road before the big crash?",
         thumbnail: "assets/vehiclerunner.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.VasuStudio.VehicleRunner",
-        featured: false
+        featured: false,
+        media: {
+            screenshots: [
+        
+            ]
+        }
     },
     {
-        id: "Space Pilot",
+        id: "space_pilot",
         title: "Space Pilot",
-        description: "This is a simple 2D space shooter game.You control a plane in space and face continuous enemy attacks.Enemy planes appear again and again.Your goal is to shoot enemy planes and avoid getting hit.",
+        description: "This is a simple 2D space shooter game. You control a plane in space and face continuous enemy attacks. Enemy planes appear again and again. Your goal is to shoot enemy planes and avoid getting hit.",
         thumbnail: "assets/spacepilot.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.VasuStudio.SpacePilot",
-        featured: false
+        featured: false,
+        media: {
+            screenshots: [
+                
+            ]
+        }
     }
 ];
 
 
 
 
-// 1. C# SwitchState Jaisa Function (Ek time pr ek hi window active rkhna)
+
+// 2. Global Section Management System
 function switchSection(sectionId) {
-    // Sabhi sections ko dhoondho aur hide kro
+    // Agar standalone view active hai toh use band karo aur scroll unlock karo
+    const detailView = document.getElementById('gameDetailStandaloneSection');
+    if (detailView) {
+        detailView.classList.remove('view-active');
+        document.body.style.overflow = "auto";
+    }
+
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(section => {
         section.classList.remove('active-section');
     });
 
-    // Target section ko dikhao
     const activeSection = document.getElementById(sectionId);
     if(activeSection) {
         activeSection.classList.add('active-section');
     }
 
-    // Navigation Menu links ka UI update kro
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if(link.getAttribute('onclick').includes(sectionId)) {
+        const onclickAttr = link.getAttribute('onclick');
+        if(onclickAttr && onclickAttr.includes(sectionId)) {
             link.classList.add('active');
         }
     });
 
-    // Mobile menu open hai toh section click hote hi use band kro
     const menu = document.getElementById('navMenu');
-    menu.classList.remove('mobile-active');
+    if(menu) menu.classList.remove('mobile-active');
 }
 
-
-// 2. Mobile Menu Slide In/Out Toggle Handler
+// 3. Mobile View Controller Toggle
 function toggleMobileMenu() {
     const menu = document.getElementById('navMenu');
-    menu.classList.toggle('mobile-active');
+    if(menu) menu.classList.toggle('mobile-active');
 }
 
-
-
-// 3. Dynamic UI Generation Engine (Instantiate UI Prefabs)
+// 3. Main Dashboard Renderer
 function loadGamesUI() {
     const allGamesContainer = document.getElementById('allGamesContainer');
     const featuredContainer = document.getElementById('featuredGameContainer');
@@ -83,16 +108,20 @@ function loadGamesUI() {
     let featuredHTML = "";
 
     gamesData.forEach(game => {
-        // UI Template Element (Jaise Unity me UI prefab hota hai)
         const cardTemplate = `
             <div class="game-card">
                 <img src="${game.thumbnail}" alt="${game.title}" class="game-thumbnail">
                 <div class="game-info">
                     <h3 class="game-title">${game.title}</h3>
                     <p class="game-desc">${game.description}</p>
-                    <a href="${game.playStoreUrl}" target="_blank" class="btn-play">
-                    <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 6px; vertical-align: middle;">download</span>Download now
-                    </a>
+                    <div class="action-buttons-group" style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+                        <a href="${game.playStoreUrl}" target="_blank" class="btn-play" style="text-align: center;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 6px; vertical-align: middle;">download</span>Download Now
+                        </a>
+                        <button onclick="navigateToGameDetails('${game.id}')" class="btn-about" style="display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 6px; cursor: pointer; font-weight: 6px; transition: 0.2s;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>About Game
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
@@ -103,15 +132,101 @@ function loadGamesUI() {
         }
     });
 
-    // DOM Inject
     if(allGamesContainer) allGamesContainer.innerHTML = allGamesHTML;
     if(featuredContainer) featuredContainer.innerHTML = featuredHTML;
 }
 
-// Unity Ke Start() method ki tarah page load hote hi initiate hoga
+
+
+// 4. Standalone Full Page Route Handler (Google Style Redirect)
+function navigateToGameDetails(gameId) {
+    const game = gamesData.find(g => g.id === gameId);
+    if(!game) return;
+
+    let detailView = document.getElementById('gameDetailStandaloneSection');
+    if(!detailView) {
+        detailView = document.createElement('div');
+        detailView.id = 'gameDetailStandaloneSection';
+        detailView.className = 'standalone-detail-page';
+        document.body.appendChild(detailView);
+    }
+
+
+    let screenshotsHTML = "";
+    if(game.media.screenshots && game.media.screenshots.length > 0) {
+        let itemsHTML = "";
+        game.media.screenshots.forEach(src => {
+            itemsHTML += `
+                <div class="portrait-frame-card">
+                    <img src="${src}" alt="Gameplay Frame">
+                </div>
+            `;
+        });
+        
+        screenshotsHTML = `
+            <div class="detail-media-section">
+                <h3 class="detail-section-title">Gameplay Showcase (9:16 Portrait)</h3>
+                <div class="horizontal-scroll-gallery">
+                    ${itemsHTML}
+                </div>
+            </div>
+        `;
+    }
+
+    // Full Screen Static View DOM Layout Inject
+    detailView.innerHTML = `
+        <div class="detail-page-wrapper">
+            <!-- Navigation Back Controls -->
+            <div class="detail-back-nav">
+                <button onclick="closeGameDetailsView()" class="btn-back-link">
+                    <span class="material-symbols-outlined">arrow_back</span> Back to Hub
+                </button>
+            </div>
+
+            <!-- Identity Header Block -->
+            <div class="detail-main-header">
+                <img src="${game.thumbnail}" alt="${game.title}" class="detail-studio-logo">
+                <div class="detail-header-meta">
+                    <h1>${game.title}</h1>
+                    <span class="studio-badge-label">VASU STUDIO</span>
+                </div>
+            </div>
+
+            <!-- Download Command Strip -->
+            <div class="detail-action-strip">
+                <a href="${game.playStoreUrl}" target="_blank" class="btn-play detail-cta-download">
+                    <span class="material-symbols-outlined">download</span> Download from Play Store
+                </a>
+            </div>
+
+            <!-- Core Description Block -->
+            <div class="detail-content-body">
+                <h3 class="detail-section-title">Overview</h3>
+                <p class="detail-long-description">${game.description}</p>
+            </div>
+
+            <!-- Dynamic Graphical Arrays -->
+            ${screenshotsHTML}
+        </div>
+    `;
+
+    // Active state toggles (Full screen layer activate layout)
+    detailView.classList.add('view-active');
+    window.scrollTo({ top: 0, behavior: 'instant' }); // View jump smoothly to top
+}
+
+// 5. Back Routing Engine Function
+function closeGameDetailsView() {
+    const detailView = document.getElementById('gameDetailStandaloneSection');
+    if (detailView) {
+        detailView.classList.remove('view-active');
+    }
+}
+
 window.onload = function() {
     loadGamesUI();
 };
+
 
 
 
