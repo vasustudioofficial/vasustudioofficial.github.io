@@ -1,6 +1,22 @@
 
 // 1. Expanded Games Data Matrix with Media Reference Assets
 const gamesData = [
+
+    {
+        id: "Car Drive & Park",
+        title: "Car Drive & Park",
+        description: "Enjoy different types of car parking and driving challenges in a single game. Complete parking levels, solve car puzzles, rescue trapped vehicles, and take on exciting driving missions.",
+        thumbnail: "assets/cardriveandpark.png",
+        playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.cardriveandpark",
+        featured: true,
+        // Game specific media assets
+        media: {
+            screenshots: [
+                "assets/cardriveandparkgameplay.png",
+                "assets/cardriveandparkpuzzelpark.png"
+            ]
+        }
+    },
     {
         id: "tiger_and_goat",
         title: "Tiger And Goat :offline",
@@ -22,7 +38,7 @@ const gamesData = [
         description: "Looking for a fun way to spend time with friends? This version of Snakes & Ladders brings the traditional tabletop experience to life with a lot more variety and control. Whether you want a quick casual match or a high-stakes game, you get to set the rules.",
         thumbnail: "assets/snakeandladder.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.snakeandladder",
-        featured: true,
+        featured: false,
         media: {
             screenshots: [
                 
@@ -239,6 +255,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const studioGamesDatabase = [
         // --- Live Games Section (Carousel) ---
         { 
+            name: "Car Drive & Park", 
+            desc: "Enjoy different types of car parking and driving challenges in a single game.", 
+            img: "assets/cardriveandpark.png",
+            heroImg: "assets/cardriveandparkbanner.png", // 4K Hero asset
+            status: "live"
+        },
+        { 
             name: "Tiger And Goat :offline", 
             desc: "Master the art of strategy with two classic board games in one!", 
             img: "assets/tigerandgoat.png",
@@ -270,15 +293,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // --- Upcoming Games Section (With & Without Graphics) ---
         {
-            name: "Car Drive & Park",
-            desc: "An upcoming. Master parking, solve puzzles, rescue vehicles, and survive thrilling chases.",
-            img: "assets/cardriveandpark.png", // Graphics Link Available
+            name: "Match-3 Puzzle",
+            desc: "Get ready for an exciting Match-3 puzzle adventure! Match colorful tiles, create powerful combos, and solve fun challenges in a vibrant world full of surprises. Explore unique levels, unlock amazing boosters, and enjoy smooth, satisfying gameplay. Stay tuned—our exciting Match-3 experience is coming soon!",
+            img: "", // Graphics Link Available
             status: "upcoming",
             projectstatus : "In Testing"
         },
         {
-            name: "Match-3 Game",
-            desc: "Get ready for an exciting Match-3 puzzle adventure! Match colorful tiles, create powerful combos, and solve fun challenges in a vibrant world full of surprises. Explore unique levels, unlock amazing boosters, and enjoy smooth, satisfying gameplay. Stay tuned—our exciting Match-3 experience is coming soon!",
+            name: "Bubble Shooter",
+            desc: "Coming Soon! Bubble Shooter is currently in development. Get ready to enjoy a fun and relaxing bubble-popping adventure with colorful levels, simple controls, and exciting challenges. Stay tuned for the official release!",
             img: "", // 🔴 Empty String/No Link: Graphics unavailable!
             status: "upcoming",
             projectstatus : "In Development"
