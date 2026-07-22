@@ -402,7 +402,7 @@ body {
     font-weight: 700;
 }
 .studio-badge-label {
-    font-size: 11px;
+    font-size: 15px;
     letter-spacing: 1px;
     color: var(--neon-cyan, #00f3ff);
     font-weight: bold;
@@ -448,20 +448,23 @@ body {
     overflow-x: auto;
     padding-bottom: 12px;
     scrollbar-width: thin;
+    align-items: flex-start;
 }
 .portrait-frame-card {
-    flex: 0 0 auto;
-    width: 180px;
-    aspect-ratio: 9/16;
+  flex: 0 0 auto;
+    /* Fixed width/aspect-ratio hata diya gaya hai taaki image ka asli ratio fit ho sake */
+    height: 320px; /* Fixed height set ki hai taaki gallery row ek samaan dikhe */
     border-radius: 10px;
     overflow: hidden;
-    border: 1.5px solid rgba(255,255,255,0.2);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3); /* Image load hone tak dark placeholder */
 }
 .portrait-frame-card img {
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    width: auto; /* Image apni original aspect ratio ke hisab se width adjust karegi */
+    display: block;
+    object-fit: contain; /* Image bilkul kategi (crop) nahi */
 }
 
 

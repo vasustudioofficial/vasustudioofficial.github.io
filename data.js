@@ -28,7 +28,9 @@ const gamesData = [
         media: {
             screenshots: [
                 "assets/tigerandgoatgameplay.png",
-                "assets/tigergoatgoplay.png"
+                "assets/tigergoatgoplay.png",
+                "assets/tigerandgoatboard.png",
+                "assets/baghchal.png"
             ]
         }
     },
@@ -41,7 +43,9 @@ const gamesData = [
         featured: false,
         media: {
             screenshots: [
-                
+                "assets/snakeandladdergameplay.png",
+                "assets/snakeandladderboard.png",
+                "assets/snakeandladderhighqulityboard.png"
             ]
         }
     },
@@ -181,7 +185,7 @@ function navigateToGameDetails(gameId) {
         
         screenshotsHTML = `
             <div class="detail-media-section">
-                <h3 class="detail-section-title">Gameplay Showcase (9:16 Portrait)</h3>
+                <h3 class="detail-section-title">Gameplay Showcase</h3>
                 <div class="horizontal-scroll-gallery">
                     ${itemsHTML}
                 </div>
@@ -204,7 +208,7 @@ function navigateToGameDetails(gameId) {
                 <img src="${game.thumbnail}" alt="${game.title}" class="detail-studio-logo">
                 <div class="detail-header-meta">
                     <h1>${game.title}</h1>
-                    <span class="studio-badge-label">VASU STUDIO</span>
+                    <span class="studio-badge-label">Vasu Studio</span>
                 </div>
             </div>
 
