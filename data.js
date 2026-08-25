@@ -29,8 +29,7 @@ const gamesData = [
             screenshots: [
                 "assets/tigerandgoatgameplay.png",
                 "assets/tigergoatgoplay.png",
-                "assets/tigerandgoatboard.png",
-                "assets/baghchal.png"
+                "assets/tigerandgoatboard.png"
             ]
         }
     },
