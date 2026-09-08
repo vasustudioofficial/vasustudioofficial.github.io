@@ -2,6 +2,21 @@
 // 1. Expanded Games Data Matrix with Media Reference Assets
 const gamesData = [
 
+     {
+        id: "GridMorph Puzzle",
+        title: "GridMorph Puzzle",
+        description: "Welcome to a fun and colorful Match-3 puzzle game with multiple themes to enjoy!",
+        thumbnail: "assets/gridmorphpuzzle.png",
+        playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.gridmorphpuzzle",
+        featured: true,
+        // Game specific media assets
+        media: {
+            screenshots: [
+                "assets/fruitmatch-3.png",
+                "assets/matchblast.png"
+            ]
+        }
+    },
     {
         id: "Car Drive & Park",
         title: "Car Drive & Park",
@@ -258,6 +273,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const studioGamesDatabase = [
         // --- Live Games Section (Carousel) ---
         { 
+            name: "GridMorph Puzzle", 
+            desc: "Welcome to a fun and colorful Match-3 puzzle game with multiple themes to enjoy!", 
+            img: "assets/gridmorphpuzzle.png",
+            heroImg: "assets/match-34K.png", // 4K Hero asset
+            status: "live"
+        },
+        { 
             name: "Car Drive & Park", 
             desc: "Enjoy different types of car parking and driving challenges in a single game.", 
             img: "assets/cardriveandpark.png",
@@ -296,8 +318,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // --- Upcoming Games Section (With & Without Graphics) ---
         {
-            name: "Match-3 Puzzle",
-            desc: "Get ready for an exciting Match-3 puzzle adventure! Match colorful tiles, create powerful combos, and solve fun challenges in a vibrant world full of surprises. Explore unique levels, unlock amazing boosters, and enjoy smooth, satisfying gameplay. Stay tuned—our exciting Match-3 experience is coming soon!",
+            name: "Math Puzzle",
+            desc: "Get ready for an exciting math puzzle adventure! Match numbers, solve simple arithmetic challenges, and create rewarding combinations in a fun, brain-teasing game. Explore relaxing levels, enjoy smooth gameplay, and test your quick-thinking math skills. Stay tuned—our fresh math puzzle experience is coming soon!",
             img: "", // Graphics Link Available
             status: "upcoming",
             projectstatus : "In Testing"
