@@ -3,8 +3,8 @@
 const gamesData = [
 
      {
-        id: "GridMorph Puzzle",
-        title: "GridMorph Puzzle",
+        id: "GridMorph: Match 3",
+        title: "GridMorph: Match 3",
         description: "Welcome to a fun and colorful Match-3 puzzle game with multiple themes to enjoy!",
         thumbnail: "assets/gridmorphpuzzle.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.gridmorphpuzzle",
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const studioGamesDatabase = [
         // --- Live Games Section (Carousel) ---
         { 
-            name: "GridMorph Puzzle", 
+            name: "GridMorph: Match 3", 
             desc: "Welcome to a fun and colorful Match-3 puzzle game with multiple themes to enjoy!", 
             img: "assets/gridmorphpuzzle.png",
             heroImg: "assets/match-34K.png", // 4K Hero asset
