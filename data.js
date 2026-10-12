@@ -2,6 +2,21 @@
 // 1. Expanded Games Data Matrix with Media Reference Assets
 const gamesData = [
 
+    {
+        id: "Math Puzzle: Learn",
+        title: "Math Puzzle: Learn",
+        description: "Looking for a fun and easy way to sharpen your math skills? Welcome to the ultimate Math Quiz Learn Game!",
+        thumbnail: "assets/mathlogo.png",
+        playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.mathpuzzle",
+        featured: true,
+        // Game specific media assets
+        media: {
+            screenshots: [
+                "assets/mathquizlearngraphics.png",
+                "assets/bodmasgraphics.png"
+            ]
+        }
+    },
      {
         id: "GridMorph: Match 3",
         title: "GridMorph: Match 3",
@@ -38,7 +53,7 @@ const gamesData = [
         description: "Master the art of strategy with two classic board games in one! Dive into the traditional world of Tiger & Goat (Bagh Bakri) or test your tactical skills in the competitive Red & Green mode. With customizable boards, varying difficulty levels, and unique environments, every match is a fresh challenge.",
         thumbnail: "assets/tigerandgoat.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.tigerandgoatoffline",
-        featured: true,
+        featured: false,
         // Game specific media assets
         media: {
             screenshots: [
@@ -314,12 +329,20 @@ document.addEventListener("DOMContentLoaded", () => {
             heroImg: "assets/spacepilotbanner.png",  // 4k Hero Asset
             status: "live"
         },
-       
+        { 
+            name: "Math Puzzle: Learn", 
+            desc: "Welcome to the ultimate Math Quiz Learn Game", 
+            img: "assets/mathlogo.png",
+            heroImg: "assets/mathquizgamegraphics.png",  // 4k Hero Asset
+            status: "live"
+        },
+
+
 
         // --- Upcoming Games Section (With & Without Graphics) ---
         {
-            name: "Math Puzzle",
-            desc: "Get ready for an exciting math puzzle adventure! Match numbers, solve simple arithmetic challenges, and create rewarding combinations in a fun, brain-teasing game. Explore relaxing levels, enjoy smooth gameplay, and test your quick-thinking math skills. Stay tuned—our fresh math puzzle experience is coming soon!",
+            name: "Crossword Math",
+            desc: "Get ready for a fresh twist on the classic crossword. In Crossword Math, the clues are numbers and equations instead of words. Fill in the grid with the right digits and operators so that every row and column adds up perfectly.",
             img: "", // Graphics Link Available
             status: "upcoming",
             projectstatus : "In Testing"
@@ -327,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             name: "Bubble Shooter",
             desc: "Coming Soon! Bubble Shooter is currently in development. Get ready to enjoy a fun and relaxing bubble-popping adventure with colorful levels, simple controls, and exciting challenges. Stay tuned for the official release!",
-            img: "", // 🔴 Empty String/No Link: Graphics unavailable!
+            img: "", //  Empty String/No Link: Graphics unavailable!
             status: "upcoming",
             projectstatus : "In Development"
         }
