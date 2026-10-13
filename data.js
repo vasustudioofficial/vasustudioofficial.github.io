@@ -288,6 +288,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const studioGamesDatabase = [
         // --- Live Games Section (Carousel) ---
         { 
+            name: "Math Puzzle: Learn", 
+            desc: "Welcome to the ultimate Math Quiz Learn Game", 
+            img: "assets/mathlogo.png",
+            heroImg: "assets/mathquizgamegraphics.png",  // 4k Hero Asset
+            status: "live"
+        },
+        { 
             name: "GridMorph: Match 3", 
             desc: "Welcome to a fun and colorful Match-3 puzzle game with multiple themes to enjoy!", 
             img: "assets/gridmorphpuzzle.png",
@@ -327,13 +334,6 @@ document.addEventListener("DOMContentLoaded", () => {
             desc: "This is a simple 2D space shooter game.", 
             img: "assets/spacepilot.png",
             heroImg: "assets/spacepilotbanner.png",  // 4k Hero Asset
-            status: "live"
-        },
-        { 
-            name: "Math Puzzle: Learn", 
-            desc: "Welcome to the ultimate Math Quiz Learn Game", 
-            img: "assets/mathlogo.png",
-            heroImg: "assets/mathquizgamegraphics.png",  // 4k Hero Asset
             status: "live"
         },
 
