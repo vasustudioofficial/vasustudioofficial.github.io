@@ -100,7 +100,12 @@ const gamesData = [
         featured: false,
         media: {
             screenshots: [
-                
+                "assets/spaceshooter.png",
+                "assets/spaceshootergameplay.png",
+                "assets/spaceshooterenemyFight.png",
+                "assets/spacepilotshow.png",
+                "assets/spacepilotfight.png",
+                "assets/spacepilotlogovisual.png"
             ]
         }
     }
