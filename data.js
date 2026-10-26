@@ -3,8 +3,8 @@
 const gamesData = [
 
     {
-        id: "Math Puzzle: Learn",
-        title: "Math Puzzle: Learn",
+        id: "Math Puzzle: Quiz & BODMAS",
+        title: "Math Puzzle: Quiz & BODMAS",
         description: "Looking for a fun and easy way to sharpen your math skills? Welcome to the ultimate Math Quiz Learn Game!",
         thumbnail: "assets/mathlogo.png",
         playStoreUrl: "https://play.google.com/store/apps/details?id=com.vasustudio.mathpuzzle",
@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const studioGamesDatabase = [
         // --- Live Games Section (Carousel) ---
         { 
-            name: "Math Puzzle: Learn", 
+            name: "Math Puzzle: Quiz & BODMAS", 
             desc: "Welcome to the ultimate Math Quiz Learn Game", 
             img: "assets/mathlogo.png",
             heroImg: "assets/mathquizgamegraphics.png",  // 4k Hero Asset
