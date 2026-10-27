@@ -13,7 +13,11 @@ const gamesData = [
         media: {
             screenshots: [
                 "assets/mathquizlearngraphics.png",
-                "assets/bodmasgraphics.png"
+                "assets/bodmasgraphics.png",
+                "assets/mathnumberfind.png",
+                "assets/mathshapefind.png",
+                "assets/mathlearn.png",
+                "assets/mathgamewin.png"
             ]
         }
     },
