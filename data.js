@@ -17,7 +17,9 @@ const gamesData = [
                 "assets/mathnumberfind.png",
                 "assets/mathshapefind.png",
                 "assets/mathlearn.png",
-                "assets/mathgamewin.png"
+                "assets/mathgamewin.png",
+                "assets/mathboard.png",
+                "assets/mathcrossword.png"
             ]
         }
     },
